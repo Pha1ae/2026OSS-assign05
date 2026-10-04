@@ -149,5 +149,13 @@ list.addEventListener("click", function (event) {
     }
 });
 
-render();
+cancelButton.addEventListener("click", function () {
+    form.reset();
+    editingIndex = null;
 
+    saveButton.textContent = "Add";
+    cancelButton.hidden = true;
+    formTitle.textContent = "Add Book";
+});
+
+render();
