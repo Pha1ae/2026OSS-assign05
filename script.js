@@ -25,6 +25,13 @@ let books = [
 ];
 
 const list = document.querySelector("#book-list");
+const form = document.querySelector("#book-form");
+
+const title = document.querySelector("#title");
+const author = document.querySelector("#author");
+const category = document.querySelector("#category");
+const year = document.querySelector("#year");
+const price = document.querySelector("#price");
 
 function render() {
     list.innerHTML = "";
@@ -53,4 +60,52 @@ function render() {
     });
 }
 
+form.addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    if (
+        title.value.trim() === "" ||
+        author.value.trim() === "" ||
+        category.value === "" ||
+        year.value === "" ||
+        price.value === ""
+    ) {
+        alert("Please fill in all fields.");
+        return;
+    }
+
+    if (title.value.trim().length < 2) {
+        alert("Title must be at least 2 characters.");
+        title.focus();
+        return;
+    }
+
+    if (Number(price.value) <= 0) {
+        alert("Price must be greater than 0.");
+        price.focus();
+        return;
+    }
+
+    if (Number(year.value) < 1400 || Number(year.value) > 2100) {
+        alert("Year must be between 1400 and 2100.");
+        year.focus();
+        return;
+    }
+
+
+    const book = {
+        title: title.value.trim(),
+        author: author.value.trim(),
+        category: category.value,
+        year: Number(year.value),
+        price: Number(price.value)
+    };
+
+        books.push(book);
+
+    form.reset();
+    render();
+});
+
 render();
+
