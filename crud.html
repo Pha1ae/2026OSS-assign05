@@ -23,9 +23,6 @@
             <form id="book-form" class="col-md-4 card p-3">
                 <h5 id="form-title">Add Book</h5>
 
-                <label for="id" class="form-label">ID</label>
-                <input id="id" type="number" class="form-control mb-3" readonly>
-
                 <label for="title" class="form-label">Title</label>
                 <input id="title" type="text" class="form-control mb-3" required minlength="2">
 
@@ -40,6 +37,9 @@
                     <option>Database</option>
                     <option>Network</option>
                 </select>
+
+                <label for="year" class="form-label">Year</label>
+                <input id="year" type="number" class="form-control mb-3">
 
                 <label for="price" class="form-label">Price</label>
                 <input id="price" type="number" class="form-control mb-3" required min="1">
@@ -64,10 +64,10 @@
                     <table class="table table-hover">
                         <thead>
                             <tr>
-                                <th>ID</th>
                                 <th>Title</th>
                                 <th>Author</th>
                                 <th>Category</th>
+                                <th>Years</th>
                                 <th>Price</th>
                                 <th>Actions</th>
                             </tr>

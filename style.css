@@ -16,11 +16,5 @@ table td {
 }
 
 table tbody tr:hover {
-    background-color: #f0f0f0;
-}
-
-@media (max-width: 768px) {
-    #search {
-        width: 150px;
-    }
+    background-color: #eeeeee;
 }
