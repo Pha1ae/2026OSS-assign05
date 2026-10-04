@@ -33,6 +33,12 @@ const category = document.querySelector("#category");
 const year = document.querySelector("#year");
 const price = document.querySelector("#price");
 
+const saveButton = document.querySelector("#save-button");
+const cancelButton = document.querySelector("#cancel-button");
+const formTitle = document.querySelector("#form-title");
+
+let editingIndex = null;
+
 function render() {
     list.innerHTML = "";
 
@@ -92,7 +98,6 @@ form.addEventListener("submit", function (event) {
         return;
     }
 
-
     const book = {
         title: title.value.trim(),
         author: author.value.trim(),
@@ -101,10 +106,39 @@ form.addEventListener("submit", function (event) {
         price: Number(price.value)
     };
 
+    if (editingIndex === null) {
         books.push(book);
+    } else {
+        books[editingIndex] = book;
+
+        editingIndex = null;
+        saveButton.textContent = "Add";
+        cancelButton.hidden = true;
+        formTitle.textContent = "Add Book";
+    }
 
     form.reset();
     render();
+});
+
+list.addEventListener("click", function (event) {
+    const index = Number(event.target.dataset.index);
+
+    if (event.target.classList.contains("edit")) {
+        const book = books[index];
+
+        title.value = book.title;
+        author.value = book.author;
+        category.value = book.category;
+        year.value = book.year;
+        price.value = book.price;
+
+        editingIndex = index;
+
+        saveButton.textContent = "Save";
+        cancelButton.hidden = false;
+        formTitle.textContent = "Edit Book";
+    }
 });
 
 render();
