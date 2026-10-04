@@ -139,6 +139,14 @@ list.addEventListener("click", function (event) {
         cancelButton.hidden = false;
         formTitle.textContent = "Edit Book";
     }
+
+    if (event.target.classList.contains("delete")) {
+
+        if (confirm("Are you sure you want to delete this book?")) {
+            books.splice(index, 1);
+            render();
+        }
+    }
 });
 
 render();
