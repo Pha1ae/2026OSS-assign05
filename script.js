@@ -11,7 +11,7 @@ let books = [
         title: "A Brief History of Time ",
         author: "Stephen Hawking",
         category: "Science",
-        year: 1888,
+        year: 1988,
         price: 23000
     },
 
@@ -23,3 +23,34 @@ let books = [
         price: 26000
     }
 ];
+
+const list = document.querySelector("#book-list");
+
+function render() {
+    list.innerHTML = "";
+
+    books.forEach(function (book, index) {
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+            <td>${book.title}</td>
+            <td>${book.author}</td>
+            <td>${book.category}</td>
+            <td>${book.year}</td>
+            <td>${book.price}</td>
+            <td>
+                <button class="btn btn-sm btn-warning edit"
+                    data-index="${index}">
+                    Edit
+                </button>
+
+                <button class="btn btn-sm btn-danger delete"
+                    data-index="${index}">
+                    Delete
+                </button>
+            </td>
+        `;
+        list.appendChild(tr);
+    });
+}
+
+render();
