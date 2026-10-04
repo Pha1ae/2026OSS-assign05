@@ -2,7 +2,7 @@
 
 ## Deployment
 
-- Vercel URL: `https://your-project.vercel.app`
+- Vercel URL: `https://2026oss-assign05-mu.vercel.app/`
 
 The project was deployed using Vercel and can be accessed through the URL above.
 
