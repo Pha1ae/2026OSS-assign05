@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+        window.addEventListener("load", function () {
+            const fruit = document.querySelector("#fruit");
+            const add = document.querySelector("#add");
+            const clear = document.querySelector("#clear");
+            const list = document.querySelector("#list");
+
+            add.addEventListener("click", function () {
+                let element = fruit.value.split(",");
+
+                for (let i = 0; i < element.length; i++) {
+
+                    if (element[i] !== "") {
+                        const li = document.createElement("li");
+                        li.textContent = element[i];
+
+                        const delBtn = document.createElement("button");
+                        delBtn.textContent = "delete";
+
+                        delBtn.addEventListener("click", function () {
+                            li.remove();
+                        });
+
+                        li.appendChild(delBtn);
+                        list.appendChild(li);
+                    }
+                }
+            });
+
+            clear.addEventListener("click", function () {
+                list.innerHTML = "";
+            });
+        });      
+    </script>
+</head>
+
+<body>
+    <input type="text" id="fruit" name="fruit">
+    <button id="add">add</button>
+
+    <ul id="list"></ul>
+
+    <button id="clear">clear</button>
+</body>
+
+</html>
